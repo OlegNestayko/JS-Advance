@@ -57,10 +57,11 @@ displayCharacters();
 const characterDetails = document.querySelector("#character-details");
 const characterDetailsRow = document.querySelector("#character-details-row");
 const backToListBtn = document.querySelector("#back-to-list-btn");
+const charactersBlock = document.querySelector(".characters");
 
 async function displayCharacterDetails(character) {
   // Скрытие списка персонажей и отображение деталей персонажа
-  charactersList.style.display = "none";
+  charactersBlock.style.display = "none";
   characterDetails.style.display = "";
 
   // Получение данных о фильмах, мире и виде существ и отображение деталей персонажа в таблице
@@ -108,6 +109,6 @@ async function displayCharacterDetails(character) {
   `;
   backToListBtn.addEventListener("click", () => {
     characterDetails.style.display = "none";
-    charactersList.style.display = "";
+    charactersBlock.style.display = "";
   });
 }
