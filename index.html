@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./css/style.css">
+	<title>Star Wars</title>
+</head>
+
+<body>
+	<div class="wrapper">
+
+		<div class="characters">
+			<h1 class="characters__title">Star Wars</h1>
+			<h2 class="characters__subtitle">Caharacters</h2>
+			<ul id="characters-list"></ul>
+			<div id="pagination">
+				<button id="prev-page-btn" disabled class="btn">Назад</button>
+				<button id="next-page-btn" class="btn">Вперед</button>
+			</div>
+		</div>
+
+		<div id="character-details" style="display: none;">
+			<table>
+				<thead>
+					<tr>
+						<th>Фото</th>
+						<th>Имя</th>
+						<th>Год рождения</th>
+						<th>Пол</th>
+						<th>Фильмы</th>
+						<th>Родная планета</th>
+						<th>Подвид</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr id="character-details-row"></tr>
+				</tbody>
+			</table>
+			<button id="back-to-list-btn" class="btn">Назад к списку</button>
+		</div>
+	</div>
+
+	<script src="./js/app.js"></script>
+</body>
+
+</html>
