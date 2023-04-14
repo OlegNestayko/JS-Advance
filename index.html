@@ -17,32 +17,32 @@
 
 		<div class="characters">
 			<h1 class="characters__title">Star Wars</h1>
-			<h2 class="characters__subtitle">Caharacters</h2>
-			<ul id="characters-list"></ul>
+			<h2 class="characters__subtitle">Characters</h2>
+			<ul id="characters-list" class="characters__list"></ul>
 			<div id="pagination" class="characters__btn">
 				<button id="prev-page-btn" disabled class="btn">Prev</button>
 				<button id="next-page-btn" class="btn">Next</button>
 			</div>
 		</div>
 
-		<div id="character-details" style="display: none;">
-			<table>
+		<div id="character-details" class="characters__details">
+			<table class="characters__table">
 				<thead>
 					<tr>
-						<th>Фото</th>
-						<th>Имя</th>
-						<th>Год рождения</th>
-						<th>Пол</th>
-						<th>Фильмы</th>
-						<th>Родная планета</th>
-						<th>Подвид</th>
+						<th>Photo</th>
+						<th>Name</th>
+						<th>Year of birth</th>
+						<th>Gender</th>
+						<th>Movies</th>
+						<th>Home planet</th>
+						<th>Subspecies</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr id="character-details-row"></tr>
 				</tbody>
 			</table>
-			<button id="back-to-list-btn" class="btn">Назад к списку</button>
+			<button id="back-to-list-btn" class="btn">Back to list</button>
 		</div>
 	</div>
 

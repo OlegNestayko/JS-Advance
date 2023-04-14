@@ -1,4 +1,4 @@
-// Запрос к API
+/* Api request */
 const baseUrl = "https://swapi.dev/api";
 let currentPage = 1;
 let characters = [];
@@ -9,7 +9,7 @@ async function fetchCharacters(page = 1) {
   characters = data.results;
 }
 
-// Отображение списка персонажей
+/* Character list display */
 const charactersList = document.querySelector("#characters-list");
 const prevPageBtn = document.querySelector("#prev-page-btn");
 const nextPageBtn = document.querySelector("#next-page-btn");
@@ -27,7 +27,7 @@ async function displayCharacters(page = 1) {
     charactersList.appendChild(listItem);
   });
 
-  // Обновление состояния кнопок "Вперед" и "Назад"
+  /* Updating the state of the forward and back buttons */
   if (currentPage === 1) {
     prevPageBtn.disabled = true;
   } else {
@@ -53,18 +53,57 @@ nextPageBtn.addEventListener("click", () => {
 
 displayCharacters();
 
-// Отображение деталей персонажа
+/* Character details display */
 const characterDetails = document.querySelector("#character-details");
 const characterDetailsRow = document.querySelector("#character-details-row");
 const backToListBtn = document.querySelector("#back-to-list-btn");
 const charactersBlock = document.querySelector(".characters");
 
 async function displayCharacterDetails(character) {
-  // Скрытие списка персонажей и отображение деталей персонажа
-  charactersBlock.style.display = "none";
-  characterDetails.style.display = "";
+  /* Change the background image on the page */
+  switch (currentPage) {
+    case 2:
+      characterDetails.style.background =
+        "url(./img/page-2-details-bg.jpg) 0 0 / cover no-repeat";
+      break;
+    case 3:
+      characterDetails.style.background =
+        "url(./img/page-3-details-bg.jpg) 0 0 / cover no-repeat";
+      break;
+    case 4:
+      characterDetails.style.background =
+        "url(./img/page-4-details-bg.jpg) 0 0 / cover no-repeat";
+      break;
+    case 5:
+      characterDetails.style.background =
+        "url(./img/page-5-details-bg.jpg) 0 0 / cover no-repeat";
+      break;
+    case 6:
+      characterDetails.style.background =
+        "url(./img/page-6-details-bg.jpg) 0 0 / cover no-repeat";
+      break;
+    case 7:
+      characterDetails.style.background =
+        "url(./img/page-7-details-bg.jpg) 0 0 / cover no-repeat";
+      break;
+    case 8:
+      characterDetails.style.background =
+        "url(./img/page-8-details-bg.jpg) 0 0 / cover no-repeat";
+      break;
+    case 9:
+      characterDetails.style.background =
+        "url(./img/page-9-details-bg.jpg) 0 0 / cover no-repeat";
+      break;
 
-  // Получение данных о фильмах, мире и виде существ и отображение деталей персонажа в таблице
+    default:
+      characterDetails.style.background =
+        "url(./img/page-1-details-bg.jpg) 0 0 / cover no-repeat";
+  }
+
+  /* Showing character details */
+  characterDetails.style.transform = "translateY(0px)";
+
+  /* Getting movie, world, and creature type data and displaying character details in a table */
   const films = await Promise.all(
     character.films.map(async (filmUrl) => {
       const response = await fetch(filmUrl);
@@ -72,18 +111,21 @@ async function displayCharacterDetails(character) {
       return data.title;
     })
   );
+
   const homeworldResponse = await fetch(character.homeworld);
   const homeworldData = await homeworldResponse.json();
   const homeworld = homeworldData.name;
 
-  let species = "n/a"; // установка значения "n/a" по умолчанию
+  /* setting "n/a" to default */
+  let species = "n/a";
+
   if (character.species.length > 0) {
     const speciesResponse = await fetch(character.species);
     const speciesData = await speciesResponse.json();
     species = speciesData.name;
   }
 
-  // Получение ссылки на фото персонажа
+  /* Getting a link to a character's photo */
   const personResponse = await fetch(
     `https://starwars-visualguide.com/assets/img/characters/${
       character.url.split("/")[5]
@@ -93,9 +135,9 @@ async function displayCharacterDetails(character) {
     ? `https://starwars-visualguide.com/assets/img/characters/${
         character.url.split("/")[5]
       }.jpg`
-    : "https://via.placeholder.com/150"; // установка ссылки на заглушку, если фото недоступно
+    : "https://via.placeholder.com/150"; /*setting a link to a stub if the photo is not available*/
 
-  // Отображение деталей персонажа в таблице
+  /* Displaying Character Details in a Table */
   characterDetailsRow.innerHTML = `
     <td><img src="${personImg}" alt="${
     character.name
@@ -108,7 +150,6 @@ async function displayCharacterDetails(character) {
     <td>${species}</td>
   `;
   backToListBtn.addEventListener("click", () => {
-    characterDetails.style.display = "none";
-    charactersBlock.style.display = "";
+    characterDetails.style.transform = "translateY(-1000px)";
   });
 }
