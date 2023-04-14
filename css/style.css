@@ -8,6 +8,7 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+
 /* Common styles */
 .btn:disabled {
   background-color: #c5d11b;
